@@ -1,0 +1,14 @@
+Type	Frequency_Expected(%)
+typ_1	38.21
+typ_1p	4.10
+typ_2	11.81
+typ_2p	2.51
+typ_4-1	5.10
+typ_4-2	3.95
+typ_4-3	3.53
+typ_4-4	2.70
+typ_4m	16.44
+typ_6a1	0.73
+typ_6a2	0.20
+typ_6b	0.88
+typ_8	9.84

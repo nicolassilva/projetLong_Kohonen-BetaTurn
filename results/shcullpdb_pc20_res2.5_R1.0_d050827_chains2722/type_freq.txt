@@ -1,0 +1,14 @@
+Type	Frequency_(%)
+typ_1	8.98
+typ_1p	0.53
+typ_2	0.62
+typ_2p	0.43
+typ_4-1	0.69
+typ_4-2	0.76
+typ_4-3	9.98
+typ_4-4	0.48
+typ_4misc	74.67
+typ_6a1	1.63
+typ_6a2	0.03
+typ_6b	0.03
+typ_8	1.17

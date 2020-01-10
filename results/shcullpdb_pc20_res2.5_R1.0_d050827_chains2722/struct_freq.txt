@@ -1,0 +1,5 @@
+Secondary_Structure	Frequency_(%)
+C	39.05
+E	21.9
+H	38.88
+-	0.16
