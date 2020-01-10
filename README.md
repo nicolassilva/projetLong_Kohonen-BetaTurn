@@ -25,7 +25,7 @@ Le répertoire contient :<br/>
 
 Il y a un progamme à exécuter : le programme *kohonen_BetaTurn_python3.py* qui prend en argument le nom du fichier de données à analyser.<br/>
 	
-'''Ex: *python3 kohonen_BetaTurn_python3.py -f shcullpdb_pc20_res1.6_R0.25_d050827_chains887.db*'''
+'''Ex: *python3 kohonen_BetaTurn_python3.py -f shcullpdb_pc20_res2.5_R1.0_d050827_chains2722.db*'''
 
 #### Résultats
 *************************************
