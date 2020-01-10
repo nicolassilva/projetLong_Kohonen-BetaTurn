@@ -30,7 +30,8 @@ Il y a un progamme à exécuter : le programme *kohonen_BetaTurn_python3.py* qui
 #### Résultats
 *************************************
 
-XXXXX sont dans le dossier *results*.<br/>
+Ils peuvent être trouvés dans le dossier *results*.<br/>
+Sont présentés les différentes fréquences d'acides aminés, de structures secondaires et de type de coudes Beta, ainsi que les résultats de l'apprentissage via les cartes de Kohonen.<br/>
 La partie des résultats est décrite dans le rapport dans le dossier *doc*.
 
 #### Modules python importés
