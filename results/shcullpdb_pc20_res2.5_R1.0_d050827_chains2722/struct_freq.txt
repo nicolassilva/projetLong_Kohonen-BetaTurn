@@ -1,5 +1,5 @@
 Secondary_Structure	Frequency_(%)
-C	39.05
-E	21.9
+C	40.17
+E	20.78
 H	38.88
 -	0.16

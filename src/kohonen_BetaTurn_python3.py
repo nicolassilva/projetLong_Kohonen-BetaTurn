@@ -57,7 +57,7 @@ def oneD_seq(data):
     aa_seq = []
     str_seq = []
     dict_struc_numToLet = {'0':'H', '1':'H', '2':'H', '3':'C', '4':'C',
-                           '5':'C', '6':'E', '7':'E', '8':'-'}
+                           '5':'C', '6':'C', '7':'E', '8':'-'}
     for i in range(len(data)):
         amino_seq = ''
         struc_seq = ''
@@ -97,42 +97,35 @@ def kohonen_files(struc_seq, data, ecart):
             dist = math.sqrt((float(data[i][j+4][6]) - float(data[i][j+1][6]))**2 + (float(data[i][j+4][7]) - float(data[i][j+1][7]))**2 + (float(data[i][j+4][8]) - float(data[i][j+1][8]))**2)
             #print(dist)
             if struc_seq[i][j] != struc_seq[i][j+1] or struc_seq[i][j] != struc_seq[i][j+2] or struc_seq[i][j] != struc_seq[i][j+3] and struc_seq[i][j+1] != 'H' and struc_seq[i][j+2] != 'H' and dist < 7 and struc_seq[i][j] != struc_seq[i][j+1] != struc_seq[i][j+2] != struc_seq[i][j+3] != 'E':
-                if (-60 - ecart < float(data[i][j+2][3]) < -60 + ecart) and (-30 - ecart < float(data[i][j+2][4]) < -30 + ecart) and (-90 - ecart < float(data[i][j+3][3]) < -90 + ecart) and (0 - ecart < float(data[i][j+3][4]) < 0 + ecart):
+                phi1 = float(data[i][j+2][3])
+                psi1 = float(data[i][j+2][4])
+                phi2 = float(data[i][j+3][3])
+                psi2 = float(data[i][j+3][4])
+                angles_file.append([phi1, psi1, phi2, psi2])
+                if (-60 - ecart < phi1 < -60 + ecart) and (-30 - ecart < psi1 < -30 + ecart) and (-90 - ecart < phi2 < -90 + ecart) and (0 - ecart < psi2 < 0 + ecart):
                     type_file.append('typ_1')
-                    angles_file.append([float(data[i][j+2][3]), float(data[i][j+2][4]), float(data[i][j+3][3]), float(data[i][j+3][4])])
-                elif (60 - ecart < float(data[i][j+2][3]) < 60 + ecart) and (30 - ecart < float(data[i][j+2][4]) < 30 + ecart) and (90 - ecart < float(data[i][j+3][3]) < 90 + ecart) and (0 - ecart < float(data[i][j+3][4]) < 0 + ecart):
+                elif (60 - ecart < phi1 < 60 + ecart) and (30 - ecart < psi1 < 30 + ecart) and (90 - ecart < phi2 < 90 + ecart) and (0 - ecart < psi2 < 0 + ecart):
                     type_file.append('typ_1p')
-                    angles_file.append([float(data[i][j+2][3]), float(data[i][j+2][4]), float(data[i][j+3][3]), float(data[i][j+3][4])])
-                elif (-60 - ecart < float(data[i][j+2][3]) < -60 + ecart) and (120 - ecart < float(data[i][j+2][4]) < 120 + ecart) and (80 - ecart < float(data[i][j+3][3]) < 80 + ecart) and (0 - ecart < float(data[i][j+3][4]) < 0 + ecart):
+                elif (-60 - ecart < phi1 < -60 + ecart) and (120 - ecart < psi1 < 120 + ecart) and (80 - ecart < phi2 < 80 + ecart) and (0 - ecart < psi2 < 0 + ecart):
                     type_file.append('typ_2')
-                    angles_file.append([float(data[i][j+2][3]), float(data[i][j+2][4]), float(data[i][j+3][3]), float(data[i][j+3][4])])
-                elif (60 - ecart < float(data[i][j+2][3]) < 60 + ecart) and (-120 - ecart < float(data[i][j+2][4]) < -120 + ecart) and (-80 - ecart < float(data[i][j+3][3]) < -80 + ecart) and (0 - ecart < float(data[i][j+3][4]) < 0 + ecart):
+                elif (60 - ecart < phi1 < 60 + ecart) and (-120 - ecart < psi1 < -120 + ecart) and (-80 - ecart < phi2 < -80 + ecart) and (0 - ecart < psi2 < 0 + ecart):
                     type_file.append('typ_2p')
-                    angles_file.append([float(data[i][j+2][3]), float(data[i][j+2][4]), float(data[i][j+3][3]), float(data[i][j+3][4])])
-                elif (-60 - ecart < float(data[i][j+2][3]) < -60 + ecart) and (120 - ecart < float(data[i][j+2][4]) < 120 + ecart) and (-90 - ecart < float(data[i][j+3][3]) < -90 + ecart) and (0 - ecart < float(data[i][j+3][4]) < 0 + ecart):
+                elif (-60 - ecart < phi1 < -60 + ecart) and (120 - ecart < psi1 < 120 + ecart) and (-90 - ecart < phi2 < -90 + ecart) and (0 - ecart < psi2 < 0 + ecart):
                     type_file.append('typ_6a1')
-                    angles_file.append([float(data[i][j+2][3]), float(data[i][j+2][4]), float(data[i][j+3][3]), float(data[i][j+3][4])])
-                elif (-120 - ecart < float(data[i][j+2][3]) < -120 + ecart) and (-120 - ecart < float(data[i][j+2][4]) < -120 + ecart) and (-60 - ecart < float(data[i][j+3][3]) < -60 + ecart) and (0 - ecart < float(data[i][j+3][4]) < 0 + ecart):
+                elif (-120 - ecart < phi1 < -120 + ecart) and (-120 - ecart < psi1 < -120 + ecart) and (-60 - ecart < phi2 < -60 + ecart) and (0 - ecart < psi2 < 0 + ecart):
                     type_file.append('typ_6a2')
-                    angles_file.append([float(data[i][j+2][3]), float(data[i][j+2][4]), float(data[i][j+3][3]), float(data[i][j+3][4])])
-                elif (-135 - ecart < float(data[i][j+2][3]) < -135 + ecart) and (-135 - ecart < float(data[i][j+2][4]) < -135 + ecart) and (-75 - ecart < float(data[i][j+3][3]) < -75 + ecart) and (160 - ecart < float(data[i][j+3][4]) < 160 + ecart):
+                elif (-135 - ecart < phi1 < -135 + ecart) and (-135 - ecart < psi1 < -135 + ecart) and (-75 - ecart < phi2 < -75 + ecart) and (160 - ecart < psi2 < 160 + ecart):
                     type_file.append('typ_6b')
-                    angles_file.append([float(data[i][j+2][3]), float(data[i][j+2][4]), float(data[i][j+3][3]), float(data[i][j+3][4])])
-                elif (-120 - ecart < float(data[i][j+2][3]) < -120 + ecart) and (130 - ecart < float(data[i][j+2][4]) < 130 + ecart) and (55 - ecart < float(data[i][j+3][3]) < 55 + ecart) and (41 - ecart < float(data[i][j+3][4]) < 41 + ecart):
+                elif (-120 - ecart < phi1 < -120 + ecart) and (130 - ecart < psi1 < 130 + ecart) and (55 - ecart < phi2 < 55 + ecart) and (41 - ecart < psi2 < 41 + ecart):
                     type_file.append('typ_4-1')
-                    angles_file.append([float(data[i][j+2][3]), float(data[i][j+2][4]), float(data[i][j+3][3]), float(data[i][j+3][4])])
-                elif (-85 - ecart < float(data[i][j+2][3]) < -85 + ecart) and (-15 - ecart < float(data[i][j+2][4]) < -15 + ecart) and (-125 - ecart < float(data[i][j+3][3]) < -125 + ecart) and (55 - ecart < float(data[i][j+3][4]) < 55 + ecart):
+                elif (-85 - ecart < phi1 < -85 + ecart) and (-15 - ecart < psi1 < -15 + ecart) and (-125 - ecart < phi2 < -125 + ecart) and (55 - ecart < psi2 < 55 + ecart):
                     type_file.append('typ_4-2')
-                    angles_file.append([float(data[i][j+2][3]), float(data[i][j+2][4]), float(data[i][j+3][3]), float(data[i][j+3][4])])
-                elif (-71 - ecart < float(data[i][j+2][3]) < -71 + ecart) and (-30 - ecart < float(data[i][j+2][4]) < -30 + ecart) and (-72 - ecart < float(data[i][j+3][3]) < -72 + ecart) and (-47 - ecart < float(data[i][j+3][4]) < -47 + ecart):
+                elif (-71 - ecart < phi1 < -71 + ecart) and (-30 - ecart < psi1 < -30 + ecart) and (-72 - ecart < phi2 < -72 + ecart) and (-47 - ecart < psi2 < -47 + ecart):
                     type_file.append('typ_4-3')
-                    angles_file.append([float(data[i][j+2][3]), float(data[i][j+2][4]), float(data[i][j+3][3]), float(data[i][j+3][4])])
-                elif (-97 - ecart < float(data[i][j+2][3]) < -97 + ecart) and (-2 - ecart < float(data[i][j+2][4]) < -2 + ecart) and (-117 - ecart < float(data[i][j+3][3]) < -117 + ecart) and (-11 - ecart < float(data[i][j+3][4]) < -11 + ecart):
+                elif (-97 - ecart < phi1 < -97 + ecart) and (-2 - ecart < psi1 < -2 + ecart) and (-117 - ecart < phi2 < -117 + ecart) and (-11 - ecart < psi2 < -11 + ecart):
                     type_file.append('typ_4-4')
-                    angles_file.append([float(data[i][j+2][3]), float(data[i][j+2][4]), float(data[i][j+3][3]), float(data[i][j+3][4])])
-                elif (-60 - ecart < float(data[i][j+2][3]) < -60 + ecart) and (-30 - ecart < float(data[i][j+2][4]) < -30 + ecart) and (-120 - ecart < float(data[i][j+3][3]) < -120 + ecart) and (120 - ecart < float(data[i][j+3][4]) < 120 + ecart):
+                elif (-60 - ecart < phi1 < -60 + ecart) and (-30 - ecart < psi1 < -30 + ecart) and (-120 - ecart < phi2 < -120 + ecart) and (120 - ecart < psi2 < 120 + ecart):
                     type_file.append('typ_8')
-                    angles_file.append([float(data[i][j+2][3]), float(data[i][j+2][4]), float(data[i][j+3][3]), float(data[i][j+3][4])])
                 else:
                     type_file.append('typ_4misc')
     return type_file, angles_file
@@ -284,6 +277,16 @@ def kohonen(size, angle_files, nb_loop):
     return koho_map
 
 
+def write_dict_on_file(freq_AA, file_name, header):
+    if not os.path.exists('../results/shcullpdb_pc20_res2.5_R1.0_d050827_chains2722'):
+        os.makedirs('../results/shcullpdb_pc20_res2.5_R1.0_d050827_chains2722')
+    f = open('../results/shcullpdb_pc20_res2.5_R1.0_d050827_chains2722/' + file_name, 'w')
+    f.write(header + '\n')
+    for key, value in freq_AA:
+        f.write(str(key) + '\t' + str(value) + '\n')
+    return
+
+
 def plot_map(kohonen_learn, X, title):
     """Function to plot ramachandran from a Koonen map
     X is the subplot number
@@ -305,16 +308,6 @@ def plot_map(kohonen_learn, X, title):
     plt.title(title)
     plt.gca().set_aspect('equal',adjustable='box')
     #plt.show()
-    return
-
-
-def write_dict_on_file(freq_AA, file_name, header):
-    if not os.path.exists('../results/shcullpdb_pc20_res2.5_R1.0_d050827_chains2722'):
-        os.makedirs('../results/shcullpdb_pc20_res2.5_R1.0_d050827_chains2722')
-    f = open('../results/shcullpdb_pc20_res2.5_R1.0_d050827_chains2722/' + file_name, 'w')
-    f.write(header + '\n')
-    for key, value in freq_AA:
-        f.write(str(key) + '\t' + str(value) + '\n')
     return
 
 
