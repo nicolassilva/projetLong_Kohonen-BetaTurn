@@ -78,9 +78,9 @@ def freq_in_seq(seq):
         tot_length += len(seq[i])
         for j in range(len(seq[i])):
             if seq[i][j] not in freq_seq:
-                freq_seq[seq[i][j]] = 1 #round(1 * 100 / len(seq[i]), 3)
+                freq_seq[seq[i][j]] = 1
             else:
-                freq_seq[seq[i][j]] += 1 #round(1 * 100 / len(seq[i]), 3)
+                freq_seq[seq[i][j]] += 1
     for key in freq_seq:
         freq_seq[key] = round(freq_seq[key] * 100 / tot_length, 2)
     return freq_seq
@@ -200,9 +200,9 @@ def ramachandran(angle_file, typ_file):
 
 
 def distance(val, val_node):
-    dist = val_node - val
-    if abs(dist) > 180:
-        dist = 360 - abs(dist)
+    dist = abs(val_node - val)
+    if dist > 180:
+        dist = 360 - dist
     return dist
 
 
@@ -342,7 +342,7 @@ def main():
     #ramachandran(angle_file, typ_file)
 
     #Initialise the kohonen map and learning
-    kohonen_learn = kohonen([5,5], angle_file, 25)
+    kohonen_learn = kohonen([4,4], angle_file, 25)
     print(kohonen_learn)
 
     '''#Plot kohonen map
