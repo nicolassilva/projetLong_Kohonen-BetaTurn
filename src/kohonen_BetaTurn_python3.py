@@ -86,6 +86,109 @@ def freq_in_seq(seq):
     return freq_seq
 
 
+def type_assign(phi1, psi1, phi2, psi2, i3):
+    ecart = 30
+    if i3 == 'P':
+        if (-60 - 45 < phi1 < -60 + 45) and (120 - ecart < psi1 < 120 + ecart) and (-90 - ecart < phi2 < -90 + ecart) and (0 - ecart < psi2 < 0 + ecart):
+            return 'typ_6a1'
+        elif (-60 - ecart < phi1 < -60 + ecart) and (120 - 45 < psi1 < 120 + 45) and (-90 - ecart < phi2 < -90 + ecart) and (0 - ecart < psi2 < 0 + ecart):
+            return 'typ_6a1'
+        elif (-60 - ecart < phi1 < -60 + ecart) and (120 - ecart < psi1 < 120 + ecart) and (-90 - 45 < phi2 < -90 + 45) and (0 - ecart < psi2 < 0 + ecart):
+            return 'typ_6a1'
+        elif (-60 - ecart < phi1 < -60 + ecart) and (120 - ecart < psi1 < 120 + ecart) and (-90 - ecart < phi2 < -90 + ecart) and (0 - 45 < psi2 < 0 + 45):
+            return 'typ_6a1'
+        elif (-120 - 45 < phi1 < -120 + 45) and (-120 - ecart < psi1 < -120 + ecart) and (-60 - ecart < phi2 < -60 + ecart) and (0 - ecart < psi2 < 0 + ecart):
+            return 'typ_6a2'
+        elif (-120 - ecart < phi1 < -120 + ecart) and (-120 - 45 < psi1 < -120 + 45) and (-60 - ecart < phi2 < -60 + ecart) and (0 - ecart < psi2 < 0 + ecart):
+            return 'typ_6a2'
+        elif (-120 - ecart < phi1 < -120 + ecart) and (-120 - ecart < psi1 < -120 + ecart) and (-60 - 45 < phi2 < -60 + 45) and (0 - ecart < psi2 < 0 + ecart):
+            return 'typ_6a2'
+        elif (-120 - ecart < phi1 < -120 + ecart) and (-120 - ecart < psi1 < -120 + ecart) and (-60 - ecart < phi2 < -60 + ecart) and (0 - 45 < psi2 < 0 + 45):
+            return 'typ_6a2'
+        elif (-135 - 45 < phi1 < -135 + 45) and (-135 - ecart < psi1 < -135 + ecart) and (-75 - ecart < phi2 < -75 + ecart) and (160 - ecart < psi2 < 160 + ecart):
+            return 'typ_6b'
+        elif (-135 - ecart < phi1 < -135 + ecart) and (-135 - 45 < psi1 < -135 + 45) and (-75 - ecart < phi2 < -75 + ecart) and (160 - ecart < psi2 < 160 + ecart):
+            return 'typ_6b'
+        elif (-135 - ecart < phi1 < -135 + ecart) and (-135 - ecart < psi1 < -135 + ecart) and (-75 - 45 < phi2 < -75 + 45) and (160 - ecart < psi2 < 160 + ecart):
+            return 'typ_6b'
+        elif (-135 - ecart < phi1 < -135 + ecart) and (-135 - ecart < psi1 < -135 + ecart) and (-75 - ecart < phi2 < -75 + ecart) and (160 - 45 < psi2 < 160 + 45):
+            return 'typ_6b'
+    elif (-60 - 45 < phi1 < -60 + 45) and (120 - ecart < psi1 < 120 + ecart) and (-90 - ecart < phi2 < -90 + ecart) and (0 - ecart < psi2 < 0 + ecart):
+        return 'typ_1'
+    elif (-60 - ecart < phi1 < -60 + ecart) and (120 - 45 < psi1 < 120 + 45) and (-90 - ecart < phi2 < -90 + ecart) and (0 - ecart < psi2 < 0 + ecart):
+        return 'typ_1'
+    elif (-60 - ecart < phi1 < -60 + ecart) and (120 - ecart < psi1 < 120 + ecart) and (-90 - 45 < phi2 < -90 + 45) and (0 - ecart < psi2 < 0 + ecart):
+        return 'typ_1'
+    elif (-60 - ecart < phi1 < -60 + ecart) and (120 - ecart < psi1 < 120 + ecart) and (-90 - ecart < phi2 < -90 + ecart) and (0 - 45 < psi2 < 0 + 45):
+        return 'typ_1'
+    elif (60 - 45 < phi1 < 60 + 45) and (-120 - ecart < psi1 < -120 + ecart) and (90 - ecart < phi2 < 90 + ecart) and (0 - ecart < psi2 < 0 + ecart):
+        return 'typ_1p'
+    elif (60 - ecart < phi1 < 60 + ecart) and (-120 - 45 < psi1 < -120 + 45) and (90 - ecart < phi2 < 90 + ecart) and (0 - ecart < psi2 < 0 + ecart):
+        return 'typ_1p'
+    elif (60 - ecart < phi1 < 60 + ecart) and (-120 - ecart < psi1 < -120 + ecart) and (90 - 45 < phi2 < 90 + 45) and (0 - ecart < psi2 < 0 + ecart):
+        return 'typ_1p'
+    elif (60 - ecart < phi1 < 60 + ecart) and (-120 - ecart < psi1 < -120 + ecart) and (90 - ecart < phi2 < 90 + ecart) and (0 - 45 < psi2 < 0 + 45):
+        return 'typ_1p'
+    elif (-60 - 45 < phi1 < -60 + 45) and (120 - ecart < psi1 < 120 + ecart) and (80 - ecart < phi2 < 80 + ecart) and (0 - ecart < psi2 < 0 + ecart):
+        return 'typ_2'
+    elif (-60 - ecart < phi1 < -60 + ecart) and (120 - 45 < psi1 < 120 + 45) and (80 - ecart < phi2 < 80 + ecart) and (0 - ecart < psi2 < 0 + ecart):
+        return 'typ_2'
+    elif (-60 - ecart < phi1 < -60 + ecart) and (120 - ecart < psi1 < 120 + ecart) and (80 - 45 < phi2 < 80 + 45) and (0 - ecart < psi2 < 0 + ecart):
+        return 'typ_2'
+    elif (-60 - ecart < phi1 < -60 + ecart) and (120 - ecart < psi1 < 120 + ecart) and (80 - ecart < phi2 < 80 + ecart) and (0 - 45 < psi2 < 0 + 45):
+        return 'typ_2'
+    elif (60 - 45 < phi1 < 60 + 45) and (-120 - ecart < psi1 < -120 + ecart) and (-80 - ecart < phi2 < -80 + ecart) and (0 - ecart < psi2 < 0 + ecart):
+        return 'typ_2p'
+    elif (60 - ecart < phi1 < 60 + ecart) and (-120 - 45 < psi1 < -120 + 45) and (-80 - ecart < phi2 < -80 + ecart) and (0 - ecart < psi2 < 0 + ecart):
+        return 'typ_2p'
+    elif (60 - ecart < phi1 < 60 + ecart) and (-120 - ecart < psi1 < -120 + ecart) and (-80 - 45 < phi2 < -80 + 45) and (0 - ecart < psi2 < 0 + ecart):
+        return 'typ_2p'
+    elif (60 - ecart < phi1 < 60 + ecart) and (-120 - ecart < psi1 < -120 + ecart) and (-80 - ecart < phi2 < -80 + ecart) and (0 - 45 < psi2 < 0 + 45):
+        return 'typ_2p'
+    elif (-60 - 45 < phi1 < -60 + 45) and (-30 - ecart < psi1 < -30 + ecart) and (-120 - ecart < phi2 < -120 + ecart) and (120 - ecart < psi2 < 120 + ecart):
+        return 'typ_8'
+    elif (-60 - ecart < phi1 < -60 + ecart) and (-30 - 45 < psi1 < -30 + 45) and (-120 - ecart < phi2 < -120 + ecart) and (120 - ecart < psi2 < 120 + ecart):
+        return 'typ_8'
+    elif (-60 - ecart < phi1 < -60 + ecart) and (-30 - ecart < psi1 < -30 + ecart) and (-120 - 45 < phi2 < -120 + 45) and (120 - ecart < psi2 < 120 + ecart):
+        return 'typ_8'
+    elif (-60 - ecart < phi1 < -60 + ecart) and (-30 - ecart < psi1 < -30 + ecart) and (-120 - ecart < phi2 < -120 + ecart) and (120 - 45 < psi2 < 120 + 45):
+        return 'typ_8'
+    elif (-120 - 45 < phi1 < -120 + 45) and (130 - ecart < psi1 < 130 + ecart) and (55 - ecart < phi2 < 55 + ecart) and (41 - ecart < psi2 < 41 + ecart):
+        return 'typ_4-1'
+    elif (-120 - ecart < phi1 < -120 + ecart) and (130 - 45 < psi1 < 130 + 45) and (55 - ecart < phi2 < 55 + ecart) and (41 - ecart < psi2 < 41 + ecart):
+        return 'typ_4-1'
+    elif (-120 - ecart < phi1 < -120 + ecart) and (130 - ecart < psi1 < 130 + ecart) and (55 - 45 < phi2 < 55 + 45) and (41 - ecart < psi2 < 41 + ecart):
+        return 'typ_4-1'
+    elif (-120 - ecart < phi1 < -120 + ecart) and (130 - ecart < psi1 < 130 + ecart) and (55 - ecart < phi2 < 55 + ecart) and (41 - 45 < psi2 < 41 + 45):
+        return 'typ_4-1'
+    elif (-85 - 45 < phi1 < -85 + 45) and (-15 - ecart < psi1 < -15 + ecart) and (-125 - ecart < phi2 < -125 + ecart) and (55 - ecart < psi2 < 55 + ecart):
+        return 'typ_4-2'
+    elif (-85 - ecart < phi1 < -85 + ecart) and (-15 - 45 < psi1 < -15 + 45) and (-125 - ecart < phi2 < -125 + ecart) and (55 - ecart < psi2 < 55 + ecart):
+        return 'typ_4-2'
+    elif (-85 - ecart < phi1 < -85 + ecart) and (-15 - ecart < psi1 < -15 + ecart) and (-125 - 45 < phi2 < -125 + 45) and (55 - ecart < psi2 < 55 + ecart):
+        return 'typ_4-2'
+    elif (-85 - ecart < phi1 < -85 + ecart) and (-15 - ecart < psi1 < -15 + ecart) and (-125 - ecart < phi2 < -125 + ecart) and (55 - 45 < psi2 < 55 + 45):
+        return 'typ_4-2'
+    elif (-71 - 45 < phi1 < -71 + 45) and (-30 - ecart < psi1 < -30 + ecart) and (-72 - ecart < phi2 < -72 + ecart) and (-47 - ecart < psi2 < -47 + ecart):
+        return 'typ_4-3'
+    elif (-71 - ecart < phi1 < -71 + ecart) and (-30 - 45 < psi1 < -30 + 45) and (-72 - ecart < phi2 < -72 + ecart) and (-47 - ecart < psi2 < -47 + ecart):
+        return 'typ_4-3'
+    elif (-71 - ecart < phi1 < -71 + ecart) and (-30 - ecart < psi1 < -30 + ecart) and (-72 - 45 < phi2 < -72 + 45) and (-47 - ecart < psi2 < -47 + ecart):
+        return 'typ_4-3'
+    elif (-71 - ecart < phi1 < -71 + ecart) and (-30 - ecart < psi1 < -30 + ecart) and (-72 - ecart < phi2 < -72 + ecart) and (-47 - 45 < psi2 < -47 + 45):
+        return 'typ_4-3'
+    elif (-97 - 45 < phi1 < -97 + 45) and (-2 - ecart < psi1 < -2 + ecart) and (-117 - ecart < phi2 < -117 + ecart) and (-11 - ecart < psi2 < -11 + ecart):
+        return 'typ_4-4'
+    elif (-97 - ecart < phi1 < -97 + ecart) and (-2 - 45 < psi1 < -2 + 45) and (-117 - ecart < phi2 < -117 + ecart) and (-11 - ecart < psi2 < -11 + ecart):
+        return 'typ_4-4'
+    elif (-97 - ecart < phi1 < -97 + ecart) and (-2 - ecart < psi1 < -2 + ecart) and (-117 - 45 < phi2 < -117 + 45) and (-11 - ecart < psi2 < -11 + ecart):
+        return 'typ_4-4'
+    elif (-97 - ecart < phi1 < -97 + ecart) and (-2 - ecart < psi1 < -2 + ecart) and (-117 - ecart < phi2 < -117 + ecart) and (-11 - 45 < psi2 < -11 + 45):
+        return 'typ_4-4'
+    else:
+        return 'typ_4misc'
+
+
 def kohonen_files(struc_seq, data, ecart):
     '''Return a list with phi.spi angles of the residues and a list with the turn type of the turns
     ecart is the error marge between the value of the angle and the acceptable value of the turn type'''
@@ -95,39 +198,13 @@ def kohonen_files(struc_seq, data, ecart):
         for j in range(len(struc_seq[i])-3):
             #Distance between residue i and i+3
             dist = math.sqrt((float(data[i][j+4][6]) - float(data[i][j+1][6]))**2 + (float(data[i][j+4][7]) - float(data[i][j+1][7]))**2 + (float(data[i][j+4][8]) - float(data[i][j+1][8]))**2)
-            #print(dist)
-            if struc_seq[i][j] != struc_seq[i][j+1] or struc_seq[i][j] != struc_seq[i][j+2] or struc_seq[i][j] != struc_seq[i][j+3] and struc_seq[i][j+1] != 'H' and struc_seq[i][j+2] != 'H' and dist < 7 and struc_seq[i][j] != struc_seq[i][j+1] != struc_seq[i][j+2] != struc_seq[i][j+3] != 'E':
+            if (dist <= 7) and (str(struc_seq[i][j:j+4]) != 'EEEE') and str(struc_seq[i][j+1] + struc_seq[i][j+2]) != 'HH':
                 phi1 = float(data[i][j+2][3])
                 psi1 = float(data[i][j+2][4])
                 phi2 = float(data[i][j+3][3])
                 psi2 = float(data[i][j+3][4])
                 angles_file.append([phi1, psi1, phi2, psi2])
-                if (-60 - ecart < phi1 < -60 + ecart) and (-30 - ecart < psi1 < -30 + ecart) and (-90 - ecart < phi2 < -90 + ecart) and (0 - ecart < psi2 < 0 + ecart):
-                    type_file.append('typ_1')
-                elif (60 - ecart < phi1 < 60 + ecart) and (30 - ecart < psi1 < 30 + ecart) and (90 - ecart < phi2 < 90 + ecart) and (0 - ecart < psi2 < 0 + ecart):
-                    type_file.append('typ_1p')
-                elif (-60 - ecart < phi1 < -60 + ecart) and (120 - ecart < psi1 < 120 + ecart) and (80 - ecart < phi2 < 80 + ecart) and (0 - ecart < psi2 < 0 + ecart):
-                    type_file.append('typ_2')
-                elif (60 - ecart < phi1 < 60 + ecart) and (-120 - ecart < psi1 < -120 + ecart) and (-80 - ecart < phi2 < -80 + ecart) and (0 - ecart < psi2 < 0 + ecart):
-                    type_file.append('typ_2p')
-                elif (-60 - ecart < phi1 < -60 + ecart) and (120 - ecart < psi1 < 120 + ecart) and (-90 - ecart < phi2 < -90 + ecart) and (0 - ecart < psi2 < 0 + ecart):
-                    type_file.append('typ_6a1')
-                elif (-120 - ecart < phi1 < -120 + ecart) and (-120 - ecart < psi1 < -120 + ecart) and (-60 - ecart < phi2 < -60 + ecart) and (0 - ecart < psi2 < 0 + ecart):
-                    type_file.append('typ_6a2')
-                elif (-135 - ecart < phi1 < -135 + ecart) and (-135 - ecart < psi1 < -135 + ecart) and (-75 - ecart < phi2 < -75 + ecart) and (160 - ecart < psi2 < 160 + ecart):
-                    type_file.append('typ_6b')
-                elif (-120 - ecart < phi1 < -120 + ecart) and (130 - ecart < psi1 < 130 + ecart) and (55 - ecart < phi2 < 55 + ecart) and (41 - ecart < psi2 < 41 + ecart):
-                    type_file.append('typ_4-1')
-                elif (-85 - ecart < phi1 < -85 + ecart) and (-15 - ecart < psi1 < -15 + ecart) and (-125 - ecart < phi2 < -125 + ecart) and (55 - ecart < psi2 < 55 + ecart):
-                    type_file.append('typ_4-2')
-                elif (-71 - ecart < phi1 < -71 + ecart) and (-30 - ecart < psi1 < -30 + ecart) and (-72 - ecart < phi2 < -72 + ecart) and (-47 - ecart < psi2 < -47 + ecart):
-                    type_file.append('typ_4-3')
-                elif (-97 - ecart < phi1 < -97 + ecart) and (-2 - ecart < psi1 < -2 + ecart) and (-117 - ecart < phi2 < -117 + ecart) and (-11 - ecart < psi2 < -11 + ecart):
-                    type_file.append('typ_4-4')
-                elif (-60 - ecart < phi1 < -60 + ecart) and (-30 - ecart < psi1 < -30 + ecart) and (-120 - ecart < phi2 < -120 + ecart) and (120 - ecart < psi2 < 120 + ecart):
-                    type_file.append('typ_8')
-                else:
-                    type_file.append('typ_4misc')
+                type_file.append(type_assign(phi1, psi1, phi2, psi2, data[i][j+3][0]))
     return type_file, angles_file
 
 
@@ -206,6 +283,36 @@ def distance(val, val_node):
     return dist
 
 
+def plot_map(kohonen_learn, title, save):
+    """Function to plot ramachandran from a Koonen map
+    X is the number of nodes per lignes
+    """
+    fig, axs = plt.subplots(4,4)
+    lign = 0
+    col = 0
+    for i in range(len(kohonen_learn)):
+        for j in range(len(kohonen_learn[i])):
+            axs[lign, col].plot(kohonen_learn[i][j][0], kohonen_learn[i][j][1], 'ro', label = 'Residu i+1')
+            axs[lign, col].plot(kohonen_learn[i][j][2], kohonen_learn[i][j][3], 'bo', label = 'Residu i+2')
+            axs[lign, col].plot([-180,180], [0,0], 'k')
+            axs[lign, col].plot([0,0], [-180,180], 'k')
+            axs[lign, col].set_xlim(-180, 180)
+            axs[lign, col].set_ylim(-180, 180)
+            #axs[lign, col].set_title('Neurone ['+str(i+1)+';'+str(j+1)+']')
+            axs[lign, col].set_aspect('equal',adjustable='box')
+            col += 1
+        col = 0
+        lign += 1
+    for ax in axs.flat:
+        ax.set(xlabel='Phi', ylabel='Psi')
+    handles, labels = ax.get_legend_handles_labels()
+    fig.legend(handles, labels, loc='lower center')
+    fig.suptitle(title)
+    plt.savefig('../results/shcullpdb_pc20_res2.5_R1.0_d050827_chains2722/' + save)
+    plt.show()
+    return
+
+
 def kohonen(size, angle_files, nb_loop):
     '''Kohonen maps
     size = (X,Y), with X and Y as integers
@@ -222,15 +329,13 @@ def kohonen(size, angle_files, nb_loop):
         for j in range(len(koho_map[i])):
             val_init = rd.choice(angle_files)
             koho_map[i][j] = val_init
-    print(koho_map)
+    plot_map(koho_map, 'Carte post initialisation', 'carte_Pre_Apprentissage.png')
     #Search Winner using distance
     a0 = 0.8 #Alpha init
-    n0 = 0.5 #Beta init
-    for loop in range(1):
+    n0 = 4 #Beta init
+    for loop in range(nb_loop):
         val = rd.choice(angle_files)
-        #print(val)
         d = 200 #Initialise a large distance
-        #
         for i in range(len(koho_map)):
             for j in range(len(koho_map[i])):
                 #Calculate the total distance
@@ -239,10 +344,13 @@ def kohonen(size, angle_files, nb_loop):
                 if dist < d:
                     d = dist
                     winner = [i,j]
-        print(winner)
 
         #Find first neighbors nodes (8 nodes)
         neighbors = [[winner[0]-1, winner[1]-1], [winner[0]-1, winner[1]], [winner[0]-1, winner[1]+1], [winner[0], winner[1]-1], [winner[0], winner[1]+1], [winner[0]+1, winner[1]-1], [winner[0]+1, winner[1]], [winner[0]+1, winner[1]+1]]
+        #Create distance array between winner and neighbors
+        dist_node_to_Wnode = []
+        for i in range(len(neighbors)):
+            dist_node_to_Wnode.append(math.sqrt((winner[0] - neighbors[i][0])**2 + (winner[1] - neighbors[i][1])**2))
         #Loop to close the map and allow nodes to be linked
         for i in range(len(neighbors)):
             if neighbors[i][0] > len(koho_map)-1:
@@ -253,27 +361,19 @@ def kohonen(size, angle_files, nb_loop):
                 neighbors[i][0] = len(koho_map)-1
             if neighbors[i][1] == -1:
                 neighbors[i][1] = len(koho_map[0])-1
-        #print(neighbors)
-        #print(koho_map)
 
         coeff_a = (a0) / (1 + (loop / nb_loop))
-        coeff_b = 4
+        nu = (n0) / (1 + (loop / nb_loop))
+        coeff_b = np.exp(- (0)**2 / (2*(nu**2))) #Distance between winner and winner is 0
         gamma = coeff_a * coeff_b
         #Modification of the value of the winner
-        koho_map[winner[0],winner[1]] = koho_map[winner[0],winner[1]] + (val - koho_map[winner[0],winner[1]]) * gamma
-        #print(koho_map)
+        koho_map[winner[0],winner[1]] = koho_map[winner[0], winner[1]] + (val - koho_map[winner[0],winner[1]]) * gamma
 
         #Change nodes values (diffusion)
-        nu = (n0) / (1 + (loop / nb_loop))
         for i in range(len(neighbors)):
-            dist_node_to_Wnode = math.sqrt((winner[0] - neighbors[i][0])**2 + (winner[1] - neighbors[i][1])**2)
-            coeff_b = np.exp(- (dist_node_to_Wnode)**2 / (2*(nu**2)))
-            #print(coeff_b)
+            coeff_b = np.exp(- (dist_node_to_Wnode[i])**2 / (2*(nu**2)))
             gamma = coeff_a * coeff_b
-            #print(koho_map[neighbors[i][0],neighbors[i][1]])
             koho_map[neighbors[i][0],neighbors[i][1]] = koho_map[neighbors[i][0],neighbors[i][1]] + (val - koho_map[neighbors[i][0],neighbors[i][1]]) * gamma
-            #print(gamma)
-            #print(koho_map[neighbors[i][0],neighbors[i][1]])
     return koho_map
 
 
@@ -284,30 +384,6 @@ def write_dict_on_file(freq_AA, file_name, header):
     f.write(header + '\n')
     for key, value in freq_AA:
         f.write(str(key) + '\t' + str(value) + '\n')
-    return
-
-
-def plot_map(kohonen_learn, X, title):
-    """Function to plot ramachandran from a Koonen map
-    X is the subplot number
-    """
-    plt.subplot(X)
-    x = []
-    y = []
-    for i in range(len(kohonen_learn)):
-        for j in range(len(kohonen_learn[i])):
-            x.append(kohonen_learn[i][j][0])
-            y.append(kohonen_learn[i][j][1])
-    plt.plot(x, y, 'o')
-    plt.plot([-180,180], [0,0], 'k')
-    plt.plot([0,0], [-180,180], 'k')
-    plt.xlim(-180, 180)
-    plt.xlabel('Phi')
-    plt.ylim(-180, 180)
-    plt.ylabel('Psi')
-    plt.title(title)
-    plt.gca().set_aspect('equal',adjustable='box')
-    #plt.show()
     return
 
 
@@ -334,21 +410,18 @@ def main():
     numb_type = count_type(typ_file)
 
     #Write on files the different frequencies
-    write_dict_on_file(freq_AA_seq.items(), 'aa_freq.txt', 'Amino_Acids' + '\t' + 'Frequency_(%)')
-    write_dict_on_file(freq_Struc_seq.items(), 'struct_freq.txt', 'Secondary_Structure' + '\t' + 'Frequency_(%)')
-    write_dict_on_file(numb_type.items(), 'type_freq.txt', 'Type' + '\t' + 'Frequency_(%)')
+    #write_dict_on_file(freq_AA_seq.items(), 'aa_freq.txt', 'Amino_Acids' + '\t' + 'Frequency_(%)')
+    #write_dict_on_file(freq_Struc_seq.items(), 'struct_freq.txt', 'Secondary_Structure' + '\t' + 'Frequency_(%)')
+    #write_dict_on_file(numb_type.items(), 'type_freq.txt', 'Type' + '\t' + 'Frequency_(%)')
 
     #Ramachandran plot of the data
     #ramachandran(angle_file, typ_file)
 
     #Initialise the kohonen map and learning
-    kohonen_learn = kohonen([4,4], angle_file, 25)
-    print(kohonen_learn)
+    kohonen_learn = kohonen([4,4], angle_file, 20)
 
-    '''#Plot kohonen map
-    plt.figure(1)
-    plot_map(kohonen_learn_2, 122, 'Résidues i+2')
-    plt.show()'''
+    #Plot kohonen map
+    plot_map(kohonen_learn, 'Post apprentissage carte', 'carte_Post_Apprentissage.png')
 
 if __name__ == '__main__':
     main()
