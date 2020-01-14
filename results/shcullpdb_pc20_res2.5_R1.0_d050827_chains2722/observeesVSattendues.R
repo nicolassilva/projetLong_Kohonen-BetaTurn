@@ -30,6 +30,6 @@ dat = rbind(data_Ob$Frequency_..., data_Ex$Frequency_Expected...)
 barplot(dat, beside=T, col = c('salmon', 'lightblue'),
         main = "Fréquences Observées et Attendues de type de coudes Beta",
         names.arg =  data_Ex$Type, border=NA, ylab = 'Fréquences (%)',
-        cex.lab = 2, cex.axis = 2, cex.names = 2, cex.main = 2)
+        cex.lab = 2, cex.axis = 2, cex.names = 1.6, cex.main = 2)
 legend('topright', fill = c("salmon", "lightblue"),
        legend = c('Observées', 'Attendues'), cex = 1.5)
