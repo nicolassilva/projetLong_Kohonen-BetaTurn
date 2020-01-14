@@ -31,7 +31,8 @@ Il y a un progamme à exécuter : le programme *kohonen_BetaTurn_python3.py* qui
 *************************************
 
 Ils peuvent être trouvés dans le dossier *results*.<br/>
-Sont présentés les différentes fréquences d'acides aminés, de structures secondaires et de type de coudes Beta, ainsi que les résultats de l'apprentissage via les cartes de Kohonen.<br/>
+Sont présentés les différentes fréquences attendues et observées d'acides aminés, de structures secondaires et de type de coudes Beta, ainsi que le code R permettant de produire ces graphiques.<br/>
+De plus, il peut y être retrouvés graphiques de Ramachandran des neurones des cartes de Kohonen avant et après apprentissage, produit directement par le programme python.<br/>
 La partie des résultats est décrite dans le rapport dans le dossier *doc*.
 
 #### Modules python importés
