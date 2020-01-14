@@ -315,7 +315,7 @@ def kohonen(size, angle_files, nb_loop):
         for j in range(len(koho_map[i])):
             type_carte.append(type_assign(koho_map[i][j][0], koho_map[i][j][1], koho_map[i][j][2], koho_map[i][j][3], 'A')) #We put amino acid i+2 to A here to not make the function has a error
     #Generate initial map
-    plot_map(koho_map, type_carte, 'Carte pre apprentissage', 'carte_Pre_Apprentissage.png')
+    plot_map(koho_map, type_carte, 'Carte pre apprentissage', 'carte_Pre_Apprentissage.svg')
 
     a0 = 0.8 #Alpha init
     n0 = 4 #Beta init
@@ -414,7 +414,7 @@ def main():
             type_carte.append(type_assign(kohonen_learn[i][j][0], kohonen_learn[i][j][1], kohonen_learn[i][j][2], kohonen_learn[i][j][3], 'A')) #We put amino acid i+2 to A here to not make the function has a error
 
     #Plot kohonen map
-    plot_map(kohonen_learn, type_carte, 'Carte post apprentissage', 'carte_Post_Apprentissage.png')
+    plot_map(kohonen_learn, type_carte, 'Carte post apprentissage', 'carte_Post_Apprentissage.svg')
 
 if __name__ == '__main__':
     main()
