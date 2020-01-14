@@ -34,7 +34,9 @@ def read_file2(path):
 
 
 def read_file(db_file):
-    '''Function that read a .db file'''
+    '''Function that read a .db file
+    Usage: read_file(db_file)
+    '''
     data = []
     data_file = open(db_file, 'r', encoding="ISO-8859-1")
     lines = data_file.readlines()
@@ -53,9 +55,12 @@ def read_file(db_file):
 def oneD_seq(data):
     '''Function that takes an array from a .db file and have 2 outputs
     one is a list of Amino acids sequences and other is a list of structure
-    sequences, both in 1 dimension'''
+    sequences, both in 1 dimension
+    Usage: oneD_seq(read_file_function_output)
+    '''
     aa_seq = []
     str_seq = []
+    #Dictionnary of the secondary structure assignement
     dict_struc_numToLet = {'0':'H', '1':'H', '2':'H', '3':'C', '4':'C',
                            '5':'C', '6':'C', '7':'E', '8':'-'}
     for i in range(len(data)):
@@ -70,13 +75,15 @@ def oneD_seq(data):
 
 
 def freq_in_seq(seq):
-    ''' Function that search for frequence of Amino acids or structures or coil
-    in a list of sequences'''
+    ''' Function that search for frequence of Amino acids or structures in a list of sequences
+    Usage: freq_in_seq(oneD_seq_function_outputs)
+    '''
     freq_seq = {}
     tot_length = 0
     for i in range(len(seq)):
         tot_length += len(seq[i])
         for j in range(len(seq[i])):
+            #If the observation doesn't exist yet, then we create it in the dictionnary
             if seq[i][j] not in freq_seq:
                 freq_seq[seq[i][j]] = 1
             else:
@@ -87,7 +94,11 @@ def freq_in_seq(seq):
 
 
 def type_assign(phi1, psi1, phi2, psi2, i3):
+    ''' Function that takes phi/psi for residu i+1 and i+2 and amino acid i+2 and return beta turn type
+    Usage: type_assign(phi_i+1, psi_i+1, phi_i+2, psi_i+2, i+2_Amino_acid)
+    '''
     ecart = 30
+    #If amino acid i+2 is a Proline, then special treatment because it is type VI
     if i3 == 'P':
         if (-60 - 45 < phi1 < -60 + 45) and (120 - ecart < psi1 < 120 + ecart) and (-90 - ecart < phi2 < -90 + ecart) and (0 - ecart < psi2 < 0 + ecart):
             return 'typ_6a1'
@@ -189,15 +200,17 @@ def type_assign(phi1, psi1, phi2, psi2, i3):
         return 'typ_4misc'
 
 
-def kohonen_files(struc_seq, data, ecart):
+def kohonen_files(struc_seq, data):
     '''Return a list with phi.spi angles of the residues and a list with the turn type of the turns
-    ecart is the error marge between the value of the angle and the acceptable value of the turn type'''
+    Usage: kohonen_files(oneD_seq_Function_output_struc_seq, read_file_function_output)
+    '''
     type_file = []
     angles_file = []
     for i in range(len(struc_seq)):
         for j in range(len(struc_seq[i])-3):
             #Distance between residue i and i+3
             dist = math.sqrt((float(data[i][j+4][6]) - float(data[i][j+1][6]))**2 + (float(data[i][j+4][7]) - float(data[i][j+1][7]))**2 + (float(data[i][j+4][8]) - float(data[i][j+1][8]))**2)
+            #Condition for 4 residues to be a beta turn
             if (dist <= 7) and (str(struc_seq[i][j:j+4]) != 'EEEE') and str(struc_seq[i][j+1] + struc_seq[i][j+2]) != 'HH':
                 phi1 = float(data[i][j+2][3])
                 psi1 = float(data[i][j+2][4])
@@ -209,8 +222,12 @@ def kohonen_files(struc_seq, data, ecart):
 
 
 def count_type(typ_list):
+    ''' Function that takes a list of type and return the frequencies of each.
+    Usage: count_type(kohonen_files_function_output_type_file)
+    '''
     numb_type = {}
     length = len(typ_list)
+    #Cout number of types as frequences (percent)
     numb_type['typ_1'] = round(typ_list.count('typ_1') * 100 / length, 2)
     numb_type['typ_1p'] = round(typ_list.count('typ_1p') * 100 / length, 2)
     numb_type['typ_2'] = round(typ_list.count('typ_2') * 100 / length, 2)
@@ -227,69 +244,27 @@ def count_type(typ_list):
     return numb_type
 
 
-def ramachandran(angle_file, typ_file):
-    """Function that takes angles phi/psi for residue i+1 and i+2 and turn type and plot ramachandran graph of the data"""
-    dict_col = {'typ_1':'gold', 'typ_1p':'darkkhaki', 'typ_2':'darkblue', 'typ_2p':'violet', 'typ_4-1':'green', 'typ_4-2':'darkgreen', 'typ_4-3':'limegreen', 'typ_4-4':'greenyellow', 'typ_6a1':'darkgrey', 'typ_6a2':'brown', 'typ_6b':'lightsalmon', 'typ_8':'red'}
-    col = ['gold', 'darkkhaki', 'darkblue', 'violet',  'green', 'darkgreen', 'limegreen', 'greenyellow', 'darkgrey', 'brown', 'lightsalmon', 'red']
-    typ_name = ['typ_1', 'typ_1p', 'typ_2', 'typ_2p', 'typ_4-1', 'typ_4-2', 'typ_4-3', 'typ_4-4', 'typ_6a1', 'typ_6a2', 'typ_6b', 'typ_8']
-
-    size_axes = 180
-    plt.figure(1)
-    plt.subplot(121)
-    plt.title('Ramachandran plot i+1')
-    plt.xlabel("Phi")
-    plt.ylabel("Psi")
-    plt.plot([-size_axes,size_axes], [0,0], 'k')
-    plt.plot([0,0], [-size_axes,size_axes], 'k')
-    plt.gca().set_aspect('equal',adjustable='box')
-    plt.xlim((-size_axes, size_axes))
-    plt.ylim((-size_axes, size_axes))
-    plt.subplot(122)
-    plt.title('Ramachandran plot i+2')
-    plt.xlabel("Phi")
-    plt.ylabel("Psi")
-    plt.plot([-size_axes,size_axes], [0,0], 'k')
-    plt.plot([0,0], [-size_axes,size_axes], 'k')
-    plt.gca().set_aspect('equal',adjustable='box')
-    plt.xlim((-size_axes, size_axes))
-    plt.ylim((-size_axes, size_axes))
-
-    for i in range(len(angle_file)):
-        plt.subplot(121)
-        plt.plot(angle_file[i][0], angle_file[i][1], 'o', c=dict_col[str(typ_file[i])], label=str(typ_file[i]))
-        plt.subplot(122)
-        plt.plot(angle_file[i][2], angle_file[i][3], 'o', c=dict_col[str(typ_file[i])], label=str(typ_file[i]))
-
-    plt.text(-680, -280, "Type 1", c='gold')
-    plt.text(-680, -320, "Type 1'", c='darkkhaki')
-    plt.text(-530, -280, "Type 2", c='darkblue')
-    plt.text(-530, -320, "Type 2'", c='violet')
-    plt.text(-380, -280, "Type 5a1", c='green')
-    plt.text(-380, -320, "Type 5a2", c='darkgreen')
-    plt.text(-230, -280, "Type 5b", c='limegreen')
-    plt.text(-230, -320, "Type 4_1", c='greenyellow')
-    plt.text(-80, -280, "Type 4_2", c='darkgrey')
-    plt.text(-80, -320, "Type 4_3", c='brown')
-    plt.text(70, -280, "Type 4_8", c='lightsalmon')
-    plt.text(70, -320, "Type 8", c='red')
-    plt.show()
-    return
-
-
 def distance(val, val_node):
+    ''' Function that takes the values of a node and the values of angles and return the distance between them
+    Usage: distance(angles_values, node_values)
+    '''
     dist = abs(val_node - val)
     if dist > 180:
         dist = 360 - dist
     return dist
 
 
-def plot_map(kohonen_learn, title, save):
+def plot_map(kohonen_learn, types, title, save):
     """Function to plot ramachandran from a Koonen map
-    X is the number of nodes per lignes
+    Title is the title we want on the plot
+    Save is the name of the file that will be saved
+    Usage: plot_map(kohonen_map, title_of_the_plot, name_of_the_seved_plot)
     """
-    fig, axs = plt.subplots(4,4)
+    plt.rcParams["figure.figsize"] = [17,10]
+    fig, axs = plt.subplots(4,4, sharex = True, sharey = True)
     lign = 0
     col = 0
+    n = 0
     for i in range(len(kohonen_learn)):
         for j in range(len(kohonen_learn[i])):
             axs[lign, col].plot(kohonen_learn[i][j][0], kohonen_learn[i][j][1], 'ro', label = 'Residu i+1')
@@ -298,9 +273,10 @@ def plot_map(kohonen_learn, title, save):
             axs[lign, col].plot([0,0], [-180,180], 'k')
             axs[lign, col].set_xlim(-180, 180)
             axs[lign, col].set_ylim(-180, 180)
-            #axs[lign, col].set_title('Neurone ['+str(i+1)+';'+str(j+1)+']')
+            axs[lign, col].set_title(types[n])
             axs[lign, col].set_aspect('equal',adjustable='box')
             col += 1
+            n += 1
         col = 0
         lign += 1
     for ax in axs.flat:
@@ -308,6 +284,7 @@ def plot_map(kohonen_learn, title, save):
     handles, labels = ax.get_legend_handles_labels()
     fig.legend(handles, labels, loc='lower center')
     fig.suptitle(title)
+    plt.rcParams["figure.figsize"] = [16,9]
     plt.savefig('../results/shcullpdb_pc20_res2.5_R1.0_d050827_chains2722/' + save)
     plt.show()
     return
@@ -316,7 +293,9 @@ def plot_map(kohonen_learn, title, save):
 def kohonen(size, angle_files, nb_loop):
     '''Kohonen maps
     size = (X,Y), with X and Y as integers
-    col_phi and col_psi are the column in the angles files: col 0 and 1 are the phi/psi for residue i+1 and col 2 and 3 are the phi/psi for residue i+2
+    angles_files is the lsit containing the angles phi/psi for residues i+1 and i+2
+    nb_loop is the number of learning iteration
+    Usage: kohonen(size_of_the_neural_map, angle_list, iteration_number)
     '''
     #Shuffleing
     rd.shuffle(angle_files)
@@ -329,12 +308,20 @@ def kohonen(size, angle_files, nb_loop):
         for j in range(len(koho_map[i])):
             val_init = rd.choice(angle_files)
             koho_map[i][j] = val_init
-    plot_map(koho_map, 'Carte post initialisation', 'carte_Pre_Apprentissage.png')
-    #Search Winner using distance
+
+    #Analyse type of the neurons of the map
+    type_carte = []
+    for i in range(len(koho_map)):
+        for j in range(len(koho_map[i])):
+            type_carte.append(type_assign(koho_map[i][j][0], koho_map[i][j][1], koho_map[i][j][2], koho_map[i][j][3], 'A')) #We put amino acid i+2 to A here to not make the function has a error
+    #Generate initial map
+    plot_map(koho_map, type_carte, 'Carte pre apprentissage', 'carte_Pre_Apprentissage.png')
+
     a0 = 0.8 #Alpha init
     n0 = 4 #Beta init
     for loop in range(nb_loop):
         val = rd.choice(angle_files)
+        #Search Winner using distance
         d = 200 #Initialise a large distance
         for i in range(len(koho_map)):
             for j in range(len(koho_map[i])):
@@ -364,12 +351,12 @@ def kohonen(size, angle_files, nb_loop):
 
         coeff_a = (a0) / (1 + (loop / nb_loop))
         nu = (n0) / (1 + (loop / nb_loop))
-        coeff_b = np.exp(- (0)**2 / (2*(nu**2))) #Distance between winner and winner is 0
+        coeff_b = np.exp(- (0)**2 / (2*(nu**2))) #Distance between winner and winner is 0, then the coeff_b for the winner is 1
         gamma = coeff_a * coeff_b
         #Modification of the value of the winner
         koho_map[winner[0],winner[1]] = koho_map[winner[0], winner[1]] + (val - koho_map[winner[0],winner[1]]) * gamma
 
-        #Change nodes values (diffusion)
+        #Change nodes values (diffusion) in function of tdistance to the winner
         for i in range(len(neighbors)):
             coeff_b = np.exp(- (dist_node_to_Wnode[i])**2 / (2*(nu**2)))
             gamma = coeff_a * coeff_b
@@ -378,6 +365,9 @@ def kohonen(size, angle_files, nb_loop):
 
 
 def write_dict_on_file(freq_AA, file_name, header):
+    ''' Function that takes a list and write it in a file
+    Usage: write_dict_on_file(list_to_write, name_of_the_file, header_of_the_file)
+    '''
     if not os.path.exists('../results/shcullpdb_pc20_res2.5_R1.0_d050827_chains2722'):
         os.makedirs('../results/shcullpdb_pc20_res2.5_R1.0_d050827_chains2722')
     f = open('../results/shcullpdb_pc20_res2.5_R1.0_d050827_chains2722/' + file_name, 'w')
@@ -405,23 +395,26 @@ def main():
     #Frequency of HEC
     freq_Struc_seq = freq_in_seq(data_prot_Struc)
     #2 lists: one with the angles and one wiht the types
-    typ_file, angle_file = kohonen_files(data_prot_Struc, data, 30)
+    typ_file, angle_file = kohonen_files(data_prot_Struc, data)
     #Count types
     numb_type = count_type(typ_file)
 
     #Write on files the different frequencies
-    #write_dict_on_file(freq_AA_seq.items(), 'aa_freq.txt', 'Amino_Acids' + '\t' + 'Frequency_(%)')
-    #write_dict_on_file(freq_Struc_seq.items(), 'struct_freq.txt', 'Secondary_Structure' + '\t' + 'Frequency_(%)')
-    #write_dict_on_file(numb_type.items(), 'type_freq.txt', 'Type' + '\t' + 'Frequency_(%)')
-
-    #Ramachandran plot of the data
-    #ramachandran(angle_file, typ_file)
+    write_dict_on_file(freq_AA_seq.items(), 'aa_freq.txt', 'Amino_Acids' + '\t' + 'Frequency_(%)')
+    write_dict_on_file(freq_Struc_seq.items(), 'struct_freq.txt', 'Secondary_Structure' + '\t' + 'Frequency_(%)')
+    write_dict_on_file(numb_type.items(), 'type_freq.txt', 'Type' + '\t' + 'Frequency_(%)')
 
     #Initialise the kohonen map and learning
-    kohonen_learn = kohonen([4,4], angle_file, 20)
+    kohonen_learn = kohonen([4,4], angle_file, 200)
+
+    #Analyse type of the neurons of the map
+    type_carte = []
+    for i in range(len(kohonen_learn)):
+        for j in range(len(kohonen_learn[i])):
+            type_carte.append(type_assign(kohonen_learn[i][j][0], kohonen_learn[i][j][1], kohonen_learn[i][j][2], kohonen_learn[i][j][3], 'A')) #We put amino acid i+2 to A here to not make the function has a error
 
     #Plot kohonen map
-    plot_map(kohonen_learn, 'Post apprentissage carte', 'carte_Post_Apprentissage.png')
+    plot_map(kohonen_learn, type_carte, 'Carte post apprentissage', 'carte_Post_Apprentissage.png')
 
 if __name__ == '__main__':
     main()
