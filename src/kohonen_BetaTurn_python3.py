@@ -318,6 +318,8 @@ def kohonen(size, angle_files, nb_loop):
     plot_map(koho_map, type_carte, 'Carte pre apprentissage', 'carte_Pre_Apprentissage.svg')
 
     a0 = 0.8 #Alpha init
+    alpha_evol = []
+    iteration = []
     n0 = 4 #Beta init
     for loop in range(nb_loop):
         val = rd.choice(angle_files)
@@ -350,6 +352,8 @@ def kohonen(size, angle_files, nb_loop):
                 neighbors[i][1] = len(koho_map[0])-1
 
         coeff_a = (a0) / (1 + (loop / nb_loop))
+        alpha_evol.append(coeff_a)
+        iteration.append(loop)
         nu = (n0) / (1 + (loop / nb_loop))
         coeff_b = np.exp(- (0)**2 / (2*(nu**2))) #Distance between winner and winner is 0, then the coeff_b for the winner is 1
         gamma = coeff_a * coeff_b
@@ -361,6 +365,12 @@ def kohonen(size, angle_files, nb_loop):
             coeff_b = np.exp(- (dist_node_to_Wnode[i])**2 / (2*(nu**2)))
             gamma = coeff_a * coeff_b
             koho_map[neighbors[i][0],neighbors[i][1]] = koho_map[neighbors[i][0],neighbors[i][1]] + (val - koho_map[neighbors[i][0],neighbors[i][1]]) * gamma
+    plt.plot(iteration, alpha_evol, 'r', linewidth=2.0)
+    plt.title("Evolution du coefficient d'amplitude (alpha) au cours de l'apprentissage", fontsize=20)
+    plt.ylabel("Coefficient d'amplitude", fontsize=20)
+    plt.xlabel("Itération d'apprentissage", fontsize=20)
+    plt.savefig('../results/shcullpdb_pc20_res2.5_R1.0_d050827_chains2722/coeff_alpha_evol.svg')
+    plt.show()
     return koho_map
 
 
